@@ -68,7 +68,7 @@ class BlogPostsController < ApplicationController
     end
   end
 
-  # ---9)
+  ## ---9)
   #Anything below the key word private cannot be called by a route.
   private
   def blog_post_params
