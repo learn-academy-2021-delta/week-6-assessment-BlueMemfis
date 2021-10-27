@@ -13,25 +13,27 @@
 // Reminder: The test will call your function
 
 
-// --------------------1) Create a function that takes in an array of objects and returns an array with a sentence about each person with their name capitalized.
+// --------------------1) Create a function that takes in an array of objects and returns an array with a sentence about each object with their name capitalized.
 
-// describe('weird named people', ()=>{
-//   //     test(var people = [
-//   { name: "ford prefect", occupation: "a hitchhiker" },
-//   { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
-//   { name: "arthur dent", occupation: "a radio employee" }, ()=>{
-//   //         expect["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
-//   //     })
-//   // })
+describe("realPeople", ()=>{
+  test("takes in an array of objects and returns an array with a sentence about each object with their name capitalized", () => {
+    var people = [
+  { name: "ford prefect", occupation: "a hitchhiker" },
+  { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
+  { name: "arthur dent", occupation: "a radio employee" }, 
+    ]
+    expect(realPeople(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."])
+    })
+   })
 
 // a) Create a test with an expect statement using the variable provided.
 
-var people = [
-  { name: "ford prefect", occupation: "a hitchhiker" },
-  { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
-  { name: "arthur dent", occupation: "a radio employee" }
-  // { name: "just be kind", occupation: "a life saver"}
-]
+// var people = [
+//   { name: "ford prefect", occupation: "a hitchhiker" },
+//   { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
+//   { name: "arthur dent", occupation: "a radio employee" }
+//   // { name: "just be kind", occupation: "a life saver"}
+// ]
 
 // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
 
@@ -42,26 +44,32 @@ var people = [
 //same with next word
 //return vars w/ expected
 
-function professions(people){
-  return people.map((person) => {
-    var fullName = person.name.split(" "); // fullName[0] = "ford", fullName[1] = "prefect";
-    var firstName =  fullName[0].charAt(0).toUpperCase() + fullName[0].slice(1);
-    var secondName =  fullName[1].charAt(0).toUpperCase() + fullName[1].slice(1);
+const realPeople = (array) => {
+  return array.map(object => {
+    let fullName = object.name.split(" ")// fullName[0] = "ford", fullName[1] = "prefect";
+    let firstName =  fullName[0].charAt(0).toUpperCase() + fullName[0].slice(1);
+    let secondName =  fullName[1].charAt(0).toUpperCase() + fullName[1].slice(1);
     //var secondName =  fullName[2].charAt(0).toUpperCase() + fullName[2].slice(1);
-    return firstName + " " + secondName + " is " + person.occupation;
+    return `${firstName + " " + secondName} is ${object.occupation}.`
   })
 }
-
-console.log(professions(people));
-
 
 // b) Create the function that makes the test pass.
 
 
 
 // --------------------2) Create a function that takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3.
-
-//describe('mixedArray', ()=>{
+describe("mixedTreArray", () => {
+  it("takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3", () => {
+    var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
+    // Expected output: [ 2, 0, -1, 0 ]
+    var hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
+    // Expected output: [ 2, 1, -1 ]
+    expect(mixedTreArray(hodgepodge1)).toEqual([ 2, 0, -1, 0 ])
+    expect(mixedTreArray(hodgepodge2)).toEqual([ 2, 1, -1 ])
+  })
+})
+//describe('mixedTreArray', ()=>{
   //     test(var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false], ()=>{
   //         expect[ 2, 0, -1, 0 ]
   //     })
@@ -69,34 +77,36 @@ console.log(professions(people));
 
 // a) Create a test with an expect statement using the variables provided.
 
-var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
-// Expected output: [ 2, 0, -1, 0 ]
-var hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
-// Expected output: [ 2, 1, -1 ]
+// var hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
+// // Expected output: [ 2, 0, -1, 0 ]
+// var hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
+// // Expected output: [ 2, 1, -1 ]
 
 
 //filter will be used to take in an array and spit out a whole new one. params are elements
 //we want to return an array of only numbers another loop .map
 //return that w/ mod 3
 
-function remainders(mixedArray) {
-  return mixedArray.filter((elem) => {
-    return typeof elem == 'number';
-  }).map( (num) => {
-    return num % 3;
-  })
+const mixedTreArray = (array) => {
+  return array.filter(value => typeof value === "number").map(value => value % 3)
 }
-
-
-console.log(remainders(hodgepodge2));
 
 // b) Create the function that makes the test pass.
 
 
 
 // --------------------3) Create a function that takes in an array of numbers and returns the sum of all the numbers cubed.
-
-//describe('addingCubed', ()=>{
+describe("addingCubes", () => {
+  it("takes in an array of numbers and returns the sum of all the numbers cubed", () => {
+    var cubeAndSum1 = [2, 3, 4]
+    // Expected output: 99
+    var cubeAndSum2 = [0, 5, 10]
+    // Expected output: 1125
+    expect(addingCubes(cubeAndSum1)).toEqual(99)
+    expect(addingCubes(cubeAndSum2)).toEqual(1125)
+  })
+})
+//describe('addingCubes', ()=>{
   //     test(var cubeAndSum1 = [2, 3, 4] ()=>{
   //         expect(99)
   //     })
@@ -104,10 +114,10 @@ console.log(remainders(hodgepodge2));
 
 // a) Create a test with an expect statement using the variables provided.
 
-var cubeAndSum1 = [2, 3, 4]
-// Expected output: 99
-var cubeAndSum2 = [0, 5, 10]
-// Expected output: 1125
+// var cubeAndSum1 = [2, 3, 4]
+// // Expected output: 99
+// var cubeAndSum2 = [0, 5, 10]
+// // Expected output: 1125
 
 
 
@@ -118,10 +128,9 @@ var cubeAndSum2 = [0, 5, 10]
 
 
 //array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
-function cubed(numbers){
-  return numbers.reduce((total, elem) => {
+
+const addingCubes = (array) => {
+  return array.reduce((total, elem) => {
     return total + (elem*elem*elem);
   }, 0)
 }
-
-console.log(cubed(cubeAndSum1));

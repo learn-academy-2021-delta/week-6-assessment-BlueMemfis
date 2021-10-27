@@ -14,17 +14,17 @@ class BlogPostsController < ApplicationController
   end
 
   def show
-    # ---3) Will fetch the record where the id column value is the same as provided in the params of the route.
+    # ---3) defining a instance variable holking an Active Record query finding one item from the BlogPost db by getting an id from the params in the url.  Will fetch the record where the id column value is the same as provided in the params of the route.
     @post = BlogPost.find(params[:id])
   end
 
-  # ---4) wanting our users to be able to add infromation to our web app that is then stored inthe database
+  # ---4) defining a method alled new that will return a form  wanting our users to be able to add infromation to our web app that is then stored in the database
   def new
     @post = Post.new
   end
 
   def create
-    # ---5) create new params for BlogPost
+    # ---5) defining an instacne variable  to create a new instance of BlogPost calling the blog_post_parmaas method which create new params for BlogPost
     @post = BlogPost.create(blog_post_params)
     if @post.valid?
       redirect_to blog_post_path(@post)
@@ -40,7 +40,7 @@ class BlogPostsController < ApplicationController
 
   def update
     @post = BlogPost.find(params[:id])
-    # ---7) update post params
+    # ---7) instance variable of one item in the db modifying a recor and being  which is a strong param method...update post params
     @post.update(blog_post_params)
     if @post.valid?
       redirect_to blog_post_path(@post)
